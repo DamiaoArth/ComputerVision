@@ -1,0 +1,12 @@
+numpy
+pandas
+matplotlib
+seaborn
+opencv-python
+opencv-python-headless
+scikit-learn
+torch
+torchvision
+albumentations
+segmentation-models-pytorch
+yolov8

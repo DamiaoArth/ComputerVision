@@ -1,0 +1,76 @@
+# Ignorar pastas e arquivos gerados
+__pycache__/
+.vscode/
+.idea/
+*.py[cod]
+*.class
+*.so
+*.log
+*.sqlite
+*.swp
+.DS_Store
+.ipynb_checkpoints/
+
+# Ignorar arquivos de modelos e resultados
+*.h5
+*.npy
+*.pth
+*.pt
+*.bin
+
+dataset/
+dataset/COVID-19/
+dataset/Normal/
+dataset/Penumonia/
+
+# Ignorar datasets e pesos do YOLO
+yolo/dataset_yolo/images/
+yolo/dataset_yolo/labels/
+yolo/runs/
+yolo/weights/
+yolo/maskmodel/data/
+
+# Ignorar arquivos de imagem e vídeo
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.tif
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.flv
+*.wmv
+
+# Ignorar arquivos de backup e compactação
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.gz
+*.bzip2
+*.xz
+*.lzma
+*.zst
+
+# Ignorar arquivos exportados do UNet
+unet/data/train_imgs.npy
+unet/data/train_masks.npy
+unet/data/valid_imgs.npy
+unet/data/valid_masks.npy
+
+# Permitir arquivos importantes
+!README.md
+!requirements.txt
+!LICENSE
+!yolo/dataset_yolo/data.yaml
+
+# Ignorar datasets grandes
+dataset/
+yolo/dataset_yolo/
+unet/data/
+runs/
