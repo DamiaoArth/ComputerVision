@@ -89,6 +89,6 @@ Sinta-se à vontade para abrir Issues para sugestões ou reportar bugs.
 
 ## 📧 Contato
 
-Para dúvidas ou sugestões, entre em contato em [seu-email@example.com].
+Para dúvidas ou sugestões, entre em contato em contatoarthurdamiao@gmail.com.
 
 
