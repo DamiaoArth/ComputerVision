@@ -3,8 +3,17 @@ import cv2
 import numpy as np
 
 # Diretórios
-mask_dirs = ["dataset/mask/COVID-19", "dataset/mask/Normal", "dataset/mask/Pneumonia"]
-output_dirs = ["dataset/yolo_labels/COVID-19", "dataset/yolo_labels/Normal", "dataset/yolo_labels/Pneumonia"]
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+mask_dirs = [
+    os.path.join(base_dir, "dataset", "mask", "COVID-19"),
+    os.path.join(base_dir, "dataset", "mask", "Normal"),
+    os.path.join(base_dir, "dataset", "mask", "Pneumonia")
+]
+output_dirs = [
+    os.path.join(base_dir, "yolo", "yolo_labels", "COVID-19"),
+    os.path.join(base_dir, "yolo", "yolo_labels", "Normal"),
+    os.path.join(base_dir, "yolo", "yolo_labels", "Pneumonia")
+]
 
 # Criar diretórios de saída, se não existirem
 for output_dir in output_dirs:

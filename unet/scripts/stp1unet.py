@@ -1,12 +1,14 @@
 import cv2
 import numpy as np
 import glob
+import os
 from tqdm import tqdm
 
 Height = 256
 Width = 256
 
-path = "/home/est.arthurmendes/Música/tralalerotralala/maskmodel/bombardilo"
+# Caminho relativo para o diretório de dados
+path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "yolo", "maskmodel", "data")
 
 imagesPath = path + "/CXR_png/*.png"  # Corrigido
 leftMaskPath = path + "/ManualMask/leftMask/*.png"  # Corrigido

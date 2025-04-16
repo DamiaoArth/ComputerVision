@@ -1,12 +1,18 @@
 import numpy as np
 import cv2
 import tensorflow as tf
-from keras.models import load_model
+import os
+from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 
+# Caminhos para os modelos
+base_dir = os.path.dirname(os.path.dirname(__file__))
+unet_model_path = os.path.join(base_dir, "unet", "models", "lungUnet.h5")
+classifier_model_path = os.path.join(base_dir, "unet", "models", "keras_model.h5")
+
 # Carregar modelos
-unet_model = load_model('lungUnet.h5', compile=False)
-classifier_model = load_model('keras_model.h5', compile=False)
+unet_model = load_model(unet_model_path, compile=False)
+classifier_model = load_model(classifier_model_path, compile=False)
 
 # Classes do modelo de classificação
 CLASS_NAMES = ['COVID-19', 'Normal', 'Pneumonia']
@@ -60,6 +66,12 @@ def process_xray(image_path):
     
 # Testar com uma imagem
 # Substitua 'sample_xray.jpg' pelo caminho da sua imagem
-test_image_path = 'img.png'
-process_xray(test_image_path)
+test_image_path = os.path.join(base_dir, "test_images", "img.png")
+
+# Verificar se o arquivo existe
+if os.path.exists(test_image_path):
+    process_xray(test_image_path)
+else:
+    print(f"Arquivo de teste não encontrado: {test_image_path}")
+    print("Por favor, adicione uma imagem de teste ou ajuste o caminho.")
 

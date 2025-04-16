@@ -6,15 +6,18 @@ Este script organiza os dados para treinamento e validação, movendo as imagens
 import os
 import shutil
 
+# Diretório base do projeto
+base_dir = os.path.dirname(os.path.dirname(__file__))
+
 # Caminho de origem (onde as imagens e máscaras originais estão)
-src_images_dir = "dataset/Pneumonia/images/"  # Exemplo para Pneumonia, altere conforme necessário
-src_masks_dir = "dataset/Pneumonia/masks/"    # Exemplo para Pneumonia, altere conforme necessário
+src_images_dir = os.path.join(base_dir, "dataset", "Pneumonia", "images")  # Exemplo para Pneumonia, altere conforme necessário
+src_masks_dir = os.path.join(base_dir, "dataset", "Pneumonia", "masks")    # Exemplo para Pneumonia, altere conforme necessário
 
 # Caminho de destino (diretório de imagens e máscaras organizadas)
-train_dir = "yolo/dataset_yolo/images/train/"
-val_dir = "yolo/dataset_yolo/images/val/"
-train_masks_dir = "yolo/dataset_yolo/labels/train/"
-val_masks_dir = "yolo/dataset_yolo/labels/val/"
+train_dir = os.path.join(base_dir, "yolo", "dataset_yolo", "images", "train")
+val_dir = os.path.join(base_dir, "yolo", "dataset_yolo", "images", "val")
+train_masks_dir = os.path.join(base_dir, "yolo", "dataset_yolo", "labels", "train")
+val_masks_dir = os.path.join(base_dir, "yolo", "dataset_yolo", "labels", "val")
 
 # Função para mover arquivos para os diretórios de treino/validação
 def move_files(src_dir, dest_dir):

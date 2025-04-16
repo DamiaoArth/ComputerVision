@@ -10,3 +10,6 @@ torchvision
 albumentations
 segmentation-models-pytorch
 yolov8
+tensorflow
+keras
+tqdm

@@ -1,11 +1,15 @@
 import numpy as np
+import os
+
+# Caminho para o diretório de dados
+data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 
 # Load the data
 print("Start loading...")
-allImagesNp = np.load("maskmodel/bombardilo/train_imgs.npy")
-maskImagesNp = np.load("maskmodel/bombardilo/train_masks.npy")
-allValidateImagesNP = np.load("maskmodel/bombardilo/valid_imgs.npy")
-maskValidateImagesNP = np.load("maskmodel/bombardilo/valid_masks.npy")
+allImagesNp = np.load(os.path.join(data_dir, "train_imgs.npy"))
+maskImagesNp = np.load(os.path.join(data_dir, "train_masks.npy"))
+allValidateImagesNP = np.load(os.path.join(data_dir, "valid_imgs.npy"))
+maskValidateImagesNP = np.load(os.path.join(data_dir, "valid_masks.npy"))
 
 # Print shapes
 print(allImagesNp.shape)
@@ -39,7 +43,7 @@ model.compile(loss="binary_crossentropy", optimizer=opt, metrics=["accuracy"])
 stepsPerEpoch = np.ceil(len(allImagesNp) / batchSize)
 validationSteps = np.ceil(len(allValidateImagesNP) / batchSize)
 
-best_model_file = "maskmodel/bombardilo/lungUnet.h5"
+best_model_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "lungUnet.h5")
 
 # Callbacks
 callbacks = [

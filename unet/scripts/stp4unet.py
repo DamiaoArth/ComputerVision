@@ -1,9 +1,10 @@
 import numpy as np
 import tensorflow as tf
 import cv2
+import os
 
 # Load the saved model
-best_model_file = "maskmodel/bombardilo/lungUnet.h5"
+best_model_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "lungUnet.h5")
 model = tf.keras.models.load_model(best_model_file)
 print(model.summary())
 
@@ -12,7 +13,7 @@ Width = 256
 Height = 256
 
 # Load test image
-testImagePath = "img.png"
+testImagePath = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "test_images", "img.png")
 img = cv2.imread(testImagePath)
 
 # Resize the image

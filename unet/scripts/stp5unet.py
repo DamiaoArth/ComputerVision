@@ -4,15 +4,24 @@ import tensorflow as tf
 import cv2
 
 # Carregar o modelo salvo
-best_model_file = "maskmodel/bombardilo/lungUnet.h5"
+best_model_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "lungUnet.h5")
 model = tf.keras.models.load_model(best_model_file)
 
 # Definir dimensões da imagem
 Width, Height = 256, 256
 
 # Diretórios de entrada e saída
-dataset_dirs = ["dataset/COVID-19", "dataset/Normal", "dataset/Pneumonia"]
-mask_output_dirs = ["dataset/mask/COVID-19", "dataset/mask/Normal", "dataset/mask/Pneumonia"]
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+dataset_dirs = [
+    os.path.join(base_dir, "dataset", "COVID-19"),
+    os.path.join(base_dir, "dataset", "Normal"),
+    os.path.join(base_dir, "dataset", "Pneumonia")
+]
+mask_output_dirs = [
+    os.path.join(base_dir, "dataset", "mask", "COVID-19"),
+    os.path.join(base_dir, "dataset", "mask", "Normal"),
+    os.path.join(base_dir, "dataset", "mask", "Pneumonia")
+]
 
 # Criar diretórios de saída, se não existirem
 for output_dir in mask_output_dirs:

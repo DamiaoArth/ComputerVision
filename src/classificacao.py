@@ -10,12 +10,16 @@ Utiliza um modelo previamente treinado para fazer a inferência nas imagens de e
 import os
 import cv2
 import numpy as np
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg16 import preprocess_input
 
+# Caminho para o modelo treinado
+model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "unet", "models", "lungUnet.h5")
+
 # Carregar o modelo treinado
-model = load_model("unet/models/lungUnet.h5")  # Caminho ajustado conforme a estrutura
+model = load_model(model_path)  # Caminho ajustado conforme a estrutura
 
 # Função para carregar e pré-processar a imagem
 def preprocess_image(img_path):
@@ -32,7 +36,7 @@ def predict_class(img_path):
     return prediction
 
 # Caminho das imagens
-image_dir = "dataset/COVID-19/images/"  # Exemplo para COVID-19, altere conforme necessário
+image_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "dataset", "COVID-19", "images")  # Exemplo para COVID-19, altere conforme necessário
 
 # Listando as imagens para classificação
 for img_name in os.listdir(image_dir):
